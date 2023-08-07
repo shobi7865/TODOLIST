@@ -1,0 +1,246 @@
+html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page Layout - here we implement css in next class</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    body {
+        margin:0px;
+    }
+    .mobile-div{
+        display: none;
+    }
+   
+    header {
+        border-bottom: 2px solid lightblue;
+        width: 100%;
+        height: 50px;
+        padding: 5px 0px;
+    }
+    header ul {
+        list-style: none;
+    }
+    header ul li {
+        float: left;
+        padding: 3px 9px;
+    }
+    header ul li:hover {
+        /* background-color: beige; */
+        border-bottom: 2px solid;
+    }
+    label {
+        cursor: pointer;
+        border-right: 1px solid #d1d4d9;
+        display: block;
+        height: 4rem;
+        width: 4rem;
+        position: relative;
+    }
+    label span {
+        border-radius: 15%;
+        height: 3px;
+        width: 32px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        transition: all 0.3s ease-out;
+    }
+    label span:before {
+        border-radius: 15%;
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        top: 400%;
+        transition: all 0.3s ease-out;
+    }
+    label span:after {
+        border-radius: 15%;
+        position: absolute;
+        content: "";
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        top: -400%;
+        transition: all 0.3s ease-out;
+    }
+
+    label:hover span {
+        height: 0;
+        transition: all 0.3s ease-out;
+    }
+    label:hover span:before {
+        height: 3px;
+        transform: rotate(-45deg);
+        transition: all 0.3s ease-out;
+    }
+    label:hover span:after {
+    height: 3px;
+    transform: rotate(45deg);
+    transition: all 0.3s ease-out;
+    }
+
+    .nav {
+        display: none;
+        border-left: 1px solid #d1d4d9;
+        border-right: 1px solid #d1d4d9;
+        border-bottom: 1px solid #d1d4d9;
+        max-width: 300px;
+        background-color: white;
+        transform: translateX(-100%) scale(1, 0.1);
+        transform-origin: top left;
+        transition: all 0.3s ease-out;
+        position: fixed;
+        right: 0px;
+    }
+    .nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    
+    }
+    .nav ul li {
+        border-top: 1px solid #efefef;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 0.6s ease-out;
+    }
+    .nav ul li a {
+        transition: all 0.3s ease-out;
+        line-height: 1rem;
+        text-decoration: none;
+        color: #8a8d92;
+        display: block;
+        padding: 1rem;
+    }
+    .nav ul li:first-child {
+        border-top: none;
+    }
+    .nav ul li:hover a {
+        color: white;
+        background-color: #6d747e;
+        transition: all 0.3s ease-out;
+    }
+    .nav ul li:hover a i {
+     color: white;
+    }
+
+    .navBtn:checked ~ .nav {
+        transform: translateX(0);
+        transition: all 0.3s ease-out;
+        display: block;
+    }
+    
+    .navBtn:checked ~ .nav ul li {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.6s ease-out;
+    }
+    
+    .navBtn {
+        display: none;
+    }
+    main{
+        width: 100%;
+        height: 400%;
+        padding: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    main div{
+        width: 25%;
+    height: 200%;
+    }
+
+    /* This preset is for tablet */
+    @media (max-width: 1000px) {
+
+    }
+
+
+    /* This preset is for mobile */
+    @media (max-width: 600px) {
+        header ul {
+            display:none;
+        }
+        .mobile-div{
+            display: block;
+            height: 100%;
+            padding-right: 10px;
+        }
+        .mobile-div label{
+            height: max-content;
+            float: right;
+            position: relative;
+            top: 35%;
+        }
+    }
+    main{
+        width: 100%;
+        height: 400%;
+        padding: 4px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        overflow: scroll;
+        align-items: center;
+    }
+main div{
+    width: 75%;
+    height: 200px;
+}
+
+</style>
+</head>
+<body>
+<header>
+    <div class="mobile-div">
+        <label for="navBtn">
+            <i class="fa fa-bars"></i>
+        </label>
+    </div>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+</header>
+<!-- Hey buddy please add some css -->
+<input type="checkbox" class="navBtn" id="navBtn" />
+<aside class="nav">
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+    </ul>
+</aside>
+<main>
+    <div id="block">
+        <h1>Header 1</h1>
+        <p>a dawdaw awdaw awdaw dwaaw awdawd aw dawdawdawdawdawdawaw </p>
+    </div>
+    <div id="block-2">
+        <h1>Header 2</h1>
+        <p>a dawdaw awdaw awdaw dwaaw awdawd aw dawdawdawdawdawdawaw </p>
+    </div>
+    <div id="block">
+        <h1>Header 1</h1>
+        <p>a dawdaw awdaw awdaw dwaaw awdawd aw dawdawdawdawdawdawaw </p>
+    </div>
+</main>
+<footer>
+    <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+    </ul>
+</footer>
+</body>
+</html>
