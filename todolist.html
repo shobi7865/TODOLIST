@@ -114,5 +114,49 @@ background-color: white;
         const taskList = document.getElementById('task-list');
         const searchButton = document.getElementById('search-button');
         const searchBar = document.getElementById('search-bar');
+        addButton.addEventListener('click', () => {
+            const newTaskText = newTaskInput.value.trim();
+            if (newTaskText !== '') {
+                const newTaskItem = document.createElement('li');
+                newTaskItem.innerHTML = `
+                    <input type="checkbox">
+                    <span class="task-text">${newTaskText}</span>
+                    <button class="edit-button">Edit</button>
+                    <button class="complete-button">Complete</button>
+                `;
+                taskList.appendChild(newTaskItem);
+                newTaskInput.value = '';
+            }
+        });
 
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchBar.value.trim().toLowerCase();
+            const tasks = taskList.getElementsByTagName('li');
+
+            for (const task of tasks) {
+                const taskText = task.querySelector('.task-text').textContent.toLowerCase();
+                if (taskText.includes(searchTerm)) {
+                    task.style.display = 'flex';
+                } else {
+                    task.style.display = 'none';
+                }
+            }
+        });
+
+        taskList.addEventListener('click', (event) => {
+            const clickedElement = event.target;
+            if (clickedElement.className === 'edit-button') {
+                const taskText = clickedElement.parentElement.querySelector('.task-text');
+                const newText = prompt('Edit task:', taskText.textContent);
+                if (newText !== null) {
+                    taskText.textContent = newText;
+                }
+            } else if (clickedElement.className === 'complete-button') {
+                const taskText = clickedElement.parentElement.querySelector('.task-text');
+                taskText.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>
 
