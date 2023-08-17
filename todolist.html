@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-html>
+<html>
 <head>
 <title>TODO List</title>
 <style>
@@ -55,3 +55,17 @@ html>
   }
 </style>
 </head>
+div id="main_div">
+  <h1>TODO List</h1>
+  <input type="text" id="taskInput" placeholder="Enter a new task">
+  <button id="addButton">Add Task</button>
+  <ul id="taskList">
+    <!-- Tasks will be added here -->
+  </ul>
+</div>
+<script>
+  const taskInput = document.getElementById("taskInput");
+  const addButton = document.getElementById("addButton");
+  const taskList = document.getElementById("taskList");
+
+  addButton.addEventListener("click", addTask);
