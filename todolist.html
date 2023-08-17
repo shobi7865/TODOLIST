@@ -84,3 +84,15 @@ div id="main_div">
       taskInput.value = "";
     }
   }
+  taskList.addEventListener("click", event => {
+    const target = event.target;
+    if (target.classList.contains("edit")) {
+      target.classList.add("enabled");
+    } else if (target.classList.contains("complete")) {
+      const li = target.parentElement;
+      li.classList.toggle("completed");
+    }
+});
+</script>
+</body>
+</html>
