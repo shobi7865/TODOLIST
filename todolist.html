@@ -32,7 +32,7 @@
     cursor: pointer;
   }
   button.edit {
-    cursor:pointer;
+cursor: pointer; 
     background-color: #3407ff;
   }
   button.complete {
@@ -85,36 +85,16 @@
     }
   }
 
+  // Enable the "Edit" button
   taskList.addEventListener("click", event => {
-  const target = event.target;
-  if (target.classList.contains("edit")) {
-    const li = target.parentElement;
-    const span = li.querySelector("span");
-
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = span.textContent;
-
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Save";
-    saveButton.classList.add("edit");
-
-    saveButton.addEventListener("click", () => {
-      span.textContent = input.value;
-      li.removeChild(input);
-      li.removeChild(saveButton);
-      target.classList.remove("enabled");
-    });
-
-    li.insertBefore(input, span);
-    li.insertBefore(saveButton, span);
-    target.classList.add("enabled");
-  } else if (target.classList.contains("complete")) {
-    const li = target.parentElement;
-    li.classList.toggle("completed");
-  }
-});
-
+    const target = event.target;
+    if (target.classList.contains("edit")) {
+      // Do edit, preventing the edit functionality
+    } else if (target.classList.contains("complete")) {
+      const li = target.parentElement;
+      li.classList.toggle("completed");
+    }
+  });
 </script>
 </body>
 </html>
